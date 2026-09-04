@@ -1,0 +1,92 @@
+[
+  {
+    "name": "MacBook Pro 16\"",
+    "price": 2499,
+    "inventory": 45,
+    "category": "Laptop",
+    "isAvailable": true,
+    "imagePath": "assets/images/macbook_pro.jpg",
+    "description": "Potente estación de trabajo portátil con chip Apple M3 Pro, pantalla Liquid Retina XDR de 16.2 pulgadas a 120 Hz y hasta 22 horas de autonomía. Diseñada para flujos de trabajo profesionales exigentes como desarrollo de software, modelado 3D y edición de video en 8K."
+  },
+  {
+    "name": "iPhone 15 Pro",
+    "price": 1199,
+    "inventory": 120,
+    "category": "Smartphone",
+    "isAvailable": true,
+    "imagePath": "assets/images/iphone_15_pro.png",
+    "description": "Diseño en titanio de calidad aeroespacial con chip A17 Pro y botón de acción personalizable. Incluye pantalla Super Retina XDR de 6.1 pulgadas con ProMotion, conector USB-C de alta velocidad y un sistema de cámaras Pro con sensor principal de 48 MP."
+  },
+  {
+    "name": "Nintendo Switch OLED",
+    "price": 349,
+    "inventory": 85,
+    "category": "Console",
+    "isAvailable": true,
+    "imagePath": "assets/images/switch_nintendo.png",
+    "description": "Consola híbrida versátil con pantalla OLED vibrante de 7 pulgadas que ofrece colores intensos y alto contraste. Cuenta con soporte ajustable para modo sobremesa, audio mejorado, 64 GB de almacenamiento interno y base con puerto LAN integrado."
+  },
+  {
+    "name": "PlayStation 5 Slim",
+    "price": 499,
+    "inventory": 0,
+    "category": "Console",
+    "isAvailable": false,
+    "imagePath": "assets/images/playstation_5.png",
+    "description": "Consola de última generación con diseño estilizado y lector de discos Ultra HD Blu-ray. Ofrece tiempos de carga casi instantáneos gracias a su SSD de 1 TB de velocidad ultraalta, gráficos 4K con trazado de rayos (Ray Tracing) y control háptico DualSense."
+  },
+  {
+    "name": "Sony WH-1000XM5",
+    "price": 399,
+    "inventory": 60,
+    "category": "Audio",
+    "isAvailable": true,
+    "imagePath": "assets/images/sony_xm5.png",
+    "description": "Audífonos inalámbricos circumaurales líderes en cancelación activa de ruido con dos procesadores integrados y ocho micrófonos. Brindan soporte para audio en alta resolución (Hi-Res/LDAC), llamadas ultranítidas y hasta 30 horas de reproducción continua."
+  },
+  {
+    "name": "Dell XPS 15",
+    "price": 1899,
+    "inventory": 30,
+    "category": "Laptop",
+    "isAvailable": true,
+    "imagePath": "assets/images/dell_xps_15.png",
+    "description": "Laptop premium para creadores con procesador Intel Core i7 de 13ª generación y gráficos NVIDIA GeForce RTX 4060. Incorpora una pantalla táctil OLED InfinityEdge 3.5K con cobertura 100% DCI-P3 y chasis de aluminio maquinado CNC con reposamanos de fibra de carbono."
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra",
+    "price": 1299,
+    "inventory": 75,
+    "category": "Smartphone",
+    "isAvailable": true,
+    "imagePath": "assets/images/galaxy_s24_ultra.png",
+    "description": "Dispositivo insignia con chasis de titanio y pantalla plana Dynamic AMOLED 2X de 6.8 pulgadas con Corning Gorilla Armor antirreflejante. Integra Galaxy AI, procesador Snapdragon 8 Gen 3 for Galaxy, lápiz S Pen integrado y teleobjetivo con zoom óptico 5x de 50 MP."
+  },
+  {
+    "name": "Xbox Series X",
+    "price": 499,
+    "inventory": 40,
+    "category": "Console",
+    "isAvailable": true,
+    "imagePath": "assets/images/xbox_series_x.png",
+    "description": "La consola de Microsoft con 12 teraflops de potencia de procesamiento gráfico bruto. Compatible con juegos en resolución 4K nativa a 120 FPS, arquitectura Xbox Velocity con SSD NVMe de 1 TB para cambios de juego instantáneos vía Quick Resume y audio espacial 3D."
+  },
+  {
+    "name": "Logitech MX Master 3S",
+    "price": 99,
+    "inventory": 150,
+    "category": "Peripherals",
+    "isAvailable": true,
+    "imagePath": "assets/images/mx_master_3s.png",
+    "description": "Mouse ergonómico para productividad y flujos de trabajo avanzados. Integra clics silenciosos, sensor óptico Darkfield de 8000 DPI con seguimiento sobre cristal y rueda electromagnética MagSpeed que permite desplazarse a mil líneas por segundo con total precisión."
+  },
+  {
+    "name": "iPad Pro 13\" M4",
+    "price": 1299,
+    "inventory": 25,
+    "category": "Tablet",
+    "isAvailable": true,
+    "imagePath": "assets/images/ipad_pro_m4.png",
+    "description": "Tablet con diseño ultradelgado de 5.1 mm equipada con la pantalla Ultra Retina XDR Tandem OLED, que alcanza 1000 nits de brillo sostenido en pantalla completa. Impulsada por el chip Apple M4 con Neural Engine de 38 billones de operaciones por segundo, compatible con el Apple Pencil Pro."
+  }
+]

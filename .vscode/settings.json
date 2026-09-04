@@ -1,0 +1,15 @@
+{
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.env": {
+    "CHROME_EXECUTABLE": "/usr/bin/microsoft-edge-stable"
+  },
+  "terminal.integrated.env.linux": {
+    "CHROME_EXECUTABLE": "/usr/bin/microsoft-edge-stable"
+  },
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm/**": true
+  }
+}
