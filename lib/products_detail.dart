@@ -25,7 +25,7 @@ class ProductsDetail extends StatelessWidget {
           ),
           Text(
             product.name,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
           ),
           Text('${product.price} USD'),
           Text(product.description),

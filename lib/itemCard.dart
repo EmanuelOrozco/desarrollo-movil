@@ -26,12 +26,20 @@ class ItemCard extends StatelessWidget {
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            
             children: [
+              IconButton(
+                iconSize: 24,
+                color: isFavorite ? Colors.yellow  : Colors.black,
+                onPressed: onFavoriteTap,
+                icon: Icon(isFavorite ? Icons.star : Icons.star_border),
+              ),
               Text(
                 product.name,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
               const SizedBox(height: 4),

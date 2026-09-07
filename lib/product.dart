@@ -1,4 +1,5 @@
 class Product {
+  int? id;
   String name;
   double price;
   int inventory;
@@ -9,6 +10,7 @@ class Product {
   // Constructor
 
   Product({
+    this.id,
     required this.name,
     required this.price,
     required this.inventory,
@@ -20,6 +22,7 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
+      id: json['id'] as int,
       name: json['name'] as String,
       price: (json['price'] as num).toDouble(),
       inventory: json['inventory'] as int,
