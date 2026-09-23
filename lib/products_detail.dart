@@ -9,9 +9,7 @@ class ProductsDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name),
-      ),
+      appBar: AppBar(title: Text(product.name)),
       body: Column(
         children: [
           ClipRRect(
@@ -21,6 +19,13 @@ class ProductsDetail extends StatelessWidget {
               width: 72,
               height: 72,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return const SizedBox(
+                  width: 72,
+                  height: 72,
+                  child: Icon(Icons.image_not_supported),
+                );
+              },
             ),
           ),
           Text(
