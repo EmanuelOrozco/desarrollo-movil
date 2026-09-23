@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'product.dart';
+import 'models/product.dart';
 
 class ItemCard extends StatelessWidget {
   final Product product;
@@ -19,23 +19,24 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.only(bottom: 12),
+      margin: EdgeInsets.zero,
       child: InkWell(
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            
             children: [
               IconButton(
                 iconSize: 24,
-                color: isFavorite ? Colors.yellow  : Colors.black,
+                color: isFavorite ? Colors.yellow : Colors.black,
                 onPressed: onFavoriteTap,
                 icon: Icon(isFavorite ? Icons.star : Icons.star_border),
               ),
               Text(
                 product.name,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -44,7 +45,6 @@ class ItemCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text('${product.price} USD'),
-              const SizedBox(height: 4),
             ],
           ),
         ),

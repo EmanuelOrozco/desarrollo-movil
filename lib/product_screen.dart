@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'itemCard.dart';
-import 'product.dart';
+import 'models/product.dart';
 import 'products_detail.dart';
 import 'services/product_services.dart';
 
@@ -17,6 +17,12 @@ class _ProductScreenState extends State<ProductScreen> {
 
   late final ProductServices _service;
   late Future<List<Product>> _futureProducts;
+
+  void retryProducts() {
+    setState(() {
+      _futureProducts = _service.getProducts();
+    });
+  }
 
   void toggleFavorite(int productId) {
     setState(() {
@@ -51,6 +57,14 @@ class _ProductScreenState extends State<ProductScreen> {
     loadFavoriteId();
   }
 
+  int _columnCount(double width) {
+    if (width >= 900) return 5;
+    if (width >= 700) return 4;
+    if (width >= 500) return 3;
+    if (width >= 300) return 2;
+    return 1;
+  }
+
   void openProductDetail(Product product) {
     Navigator.push(
       context,
@@ -67,7 +81,18 @@ class _ProductScreenState extends State<ProductScreen> {
         }
 
         if (snapshot.hasError) {
-          return const Center(child: Text('Error al cargar los productos'));
+          return Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Text('Error al cargar los productos'),
+                TextButton(
+                  onPressed: retryProducts,
+                  child: const Text('Reintentar'),
+                ),
+              ],
+            ),
+          );
         }
 
         final products = snapshot.data ?? [];
@@ -76,23 +101,35 @@ class _ProductScreenState extends State<ProductScreen> {
           return const Center(child: Text('No hay productos'));
         }
 
-        return ListView.builder(
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            final product = products[index];
-            final bool isFavorite = product.id == favoriteId;
-            return ItemCard(
-              product: product,
-              onTap: () {
-                openProductDetail(product);
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            final columns = _columnCount(constraints.maxWidth);
+
+            return GridView.builder(
+              itemCount: products.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: columns,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 0.75,
+              ),
+              itemBuilder: (context, index) {
+                final product = products[index];
+                final bool isFavorite = product.id == favoriteId;
+                return ItemCard(
+                  product: product,
+                  onTap: () {
+                    openProductDetail(product);
+                  },
+                  isFavorite: isFavorite,
+                  onFavoriteTap: () {
+                    toggleFavorite(product.id!);
+                  },
+                );
               },
-              isFavorite: isFavorite,
-              onFavoriteTap: () {
-                toggleFavorite(product.id!);
-              },
-            ); // ItemCard
+            );
           },
-        ); // ListView.builder
+        );
       },
     ); // FutureBuilder
   } // _buildBody()
