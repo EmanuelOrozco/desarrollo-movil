@@ -54,6 +54,8 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
+              Text('${product.category}', style: TextStyle(color: Color(0xFF637DCE), fontWeight: FontWeight.bold),),
+              const SizedBox(height: 4),
               Text('${product.price} USD'),
                 IconButton(
                 iconSize: 24,

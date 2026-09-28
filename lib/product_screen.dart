@@ -51,7 +51,7 @@ class _ProductScreenState extends State<ProductScreen> {
   void initState() {
     super.initState();
     _service = ProductServices(
-      baseUrl: 'https://dummyjson.com/c/b7c3-d875-45ac-ab06',
+      baseUrl: 'https://dummyjson.com/c/9f4d-1828-4077-881d',
     );
     _futureProducts = _service.getProducts();
     loadFavoriteId();

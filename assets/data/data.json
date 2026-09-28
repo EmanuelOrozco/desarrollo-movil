@@ -16,7 +16,7 @@
     "inventory": 120,
     "category": "Smartphone",
     "isAvailable": true,
-    "imagePath": "assets/images/iphone_15_pro.png",
+    "imagePath": "assets/images/iphone_15_pro.jpg",
     "description": "Diseño en titanio de calidad aeroespacial con chip A17 Pro y botón de acción personalizable. Incluye pantalla Super Retina XDR de 6.1 pulgadas con ProMotion, conector USB-C de alta velocidad y un sistema de cámaras Pro con sensor principal de 48 MP."
   },
   {
@@ -36,7 +36,7 @@
     "inventory": 0,
     "category": "Console",
     "isAvailable": false,
-    "imagePath": "assets/images/playstation_5.png",
+    "imagePath": "assets/images/playstation_5.webp",
     "description": "Consola de última generación con diseño estilizado y lector de discos Ultra HD Blu-ray. Ofrece tiempos de carga casi instantáneos gracias a su SSD de 1 TB de velocidad ultraalta, gráficos 4K con trazado de rayos (Ray Tracing) y control háptico DualSense."
   },
   {
@@ -46,7 +46,7 @@
     "inventory": 60,
     "category": "Audio",
     "isAvailable": true,
-    "imagePath": "assets/images/sony_xm5.png",
+    "imagePath": "assets/images/sony_xm5.webp",
     "description": "Audífonos inalámbricos circumaurales líderes en cancelación activa de ruido con dos procesadores integrados y ocho micrófonos. Brindan soporte para audio en alta resolución (Hi-Res/LDAC), llamadas ultranítidas y hasta 30 horas de reproducción continua."
   },
   {
@@ -56,7 +56,7 @@
     "inventory": 30,
     "category": "Laptop",
     "isAvailable": true,
-    "imagePath": "assets/images/dell_xps_15.png",
+    "imagePath": "assets/images/dell_xps_15.jpg",
     "description": "Laptop premium para creadores con procesador Intel Core i7 de 13ª generación y gráficos NVIDIA GeForce RTX 4060. Incorpora una pantalla táctil OLED InfinityEdge 3.5K con cobertura 100% DCI-P3 y chasis de aluminio maquinado CNC con reposamanos de fibra de carbono."
   },
   {
@@ -66,7 +66,7 @@
     "inventory": 75,
     "category": "Smartphone",
     "isAvailable": true,
-    "imagePath": "assets/images/galaxy_s24_ultra.png",
+    "imagePath": "assets/images/galaxy_s24_ultra.jpg",
     "description": "Dispositivo insignia con chasis de titanio y pantalla plana Dynamic AMOLED 2X de 6.8 pulgadas con Corning Gorilla Armor antirreflejante. Integra Galaxy AI, procesador Snapdragon 8 Gen 3 for Galaxy, lápiz S Pen integrado y teleobjetivo con zoom óptico 5x de 50 MP."
   },
   {
@@ -76,7 +76,7 @@
     "inventory": 40,
     "category": "Console",
     "isAvailable": true,
-    "imagePath": "assets/images/xbox_series_x.png",
+    "imagePath": "assets/images/xbox_series_x.webp",
     "description": "La consola de Microsoft con 12 teraflops de potencia de procesamiento gráfico bruto. Compatible con juegos en resolución 4K nativa a 120 FPS, arquitectura Xbox Velocity con SSD NVMe de 1 TB para cambios de juego instantáneos vía Quick Resume y audio espacial 3D."
   },
   {
@@ -86,7 +86,7 @@
     "inventory": 150,
     "category": "Peripherals",
     "isAvailable": true,
-    "imagePath": "assets/images/mx_master_3s.png",
+    "imagePath": "assets/images/mx_master_3s.jpg",
     "description": "Mouse ergonómico para productividad y flujos de trabajo avanzados. Integra clics silenciosos, sensor óptico Darkfield de 8000 DPI con seguimiento sobre cristal y rueda electromagnética MagSpeed que permite desplazarse a mil líneas por segundo con total precisión."
   },
   {
@@ -96,7 +96,7 @@
     "inventory": 25,
     "category": "Tablet",
     "isAvailable": true,
-    "imagePath": "assets/images/ipad_pro_m4.png",
+    "imagePath": "assets/images/ipad_pro_m4.webp",
     "description": "Tablet con diseño ultradelgado de 5.1 mm equipada con la pantalla Ultra Retina XDR Tandem OLED, que alcanza 1000 nits de brillo sostenido en pantalla completa. Impulsada por el chip Apple M4 con Neural Engine de 38 billones de operaciones por segundo, compatible con el Apple Pencil Pro."
   }
 ]
