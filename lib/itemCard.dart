@@ -27,11 +27,21 @@ class ItemCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                iconSize: 24,
-                color: isFavorite ? Colors.yellow : Colors.black,
-                onPressed: onFavoriteTap,
-                icon: Icon(isFavorite ? Icons.star : Icons.star_border),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  product.imagePath,
+                  height: 110,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      height: 110,
+                      color: Colors.grey.shade200,
+                      child: const Icon(Icons.image_not_supported),
+                    );
+                  },
+                ),
               ),
               Text(
                 product.name,
@@ -45,6 +55,12 @@ class ItemCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text('${product.price} USD'),
+                IconButton(
+                iconSize: 24,
+                color: isFavorite ? Colors.green : Colors.black,
+                onPressed: onFavoriteTap,
+                icon: Icon(isFavorite ? Icons.shopping_cart : Icons.shopping_cart_outlined),
+              ),
             ],
           ),
         ),
