@@ -18,6 +18,12 @@ class _ProductsDetailState extends State<ProductsDetail> {
   int rating = 0;
 
   @override
+  void initState() {
+    super.initState();
+    _loadLocalNote();
+  }
+
+  @override
   void dispose() {
     _noteController.dispose();
     super.dispose();
@@ -184,6 +190,11 @@ class _ProductsDetailState extends State<ProductsDetail> {
                         },
                       );
                     }),
+                  ),
+                  const SizedBox(height: 16),
+                  FilledButton(
+                    onPressed: _saveLocalNote,
+                    child: const Text('Guardar nota'),
                   ),
                 ],
               ),
