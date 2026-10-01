@@ -60,4 +60,12 @@ class ProductNoteStorage {
     notes.removeWhere((note) => note.productId == productId);
     await _writeAll(notes);
   }
+
+  Future<void>saveOrReplaceNote(ProductNote note) async {
+    final notes = await _readAll();
+    notes.removeWhere((item) => item.productId == note.productId);
+    notes.add(note);
+    await _writeAll(notes);
+  }
 }
+

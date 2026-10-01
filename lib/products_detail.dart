@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'models/product.dart';
+import 'models/product_note.dart';
+import 'services/product_note_storage.dart';
 
 class ProductsDetail extends StatefulWidget {
   final Product product;
@@ -11,6 +13,46 @@ class ProductsDetail extends StatefulWidget {
 }
 
 class _ProductsDetailState extends State<ProductsDetail> {
+  final productNoteStorage = ProductNoteStorage();
+  final TextEditingController _noteController = TextEditingController();
+  int rating = 0;
+
+  @override
+  void dispose() {
+    _noteController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _loadLocalNote() async {
+    final productId = widget.product.id;
+    if (productId == null) return;
+
+    final saved = await productNoteStorage.getNote(productId);
+    if (!mounted || saved == null) return;
+
+    setState(() {
+      _noteController.text = saved.note;
+      rating = saved.rating;
+    });
+  }
+
+  Future<void> _saveLocalNote() async {
+    final productId = widget.product.id;
+    if (productId == null) return;
+
+    final note = ProductNote(
+      productId: productId,
+      note: _noteController.text,
+      rating: rating,
+      updatedAt: DateTime.now(),
+    );
+    await productNoteStorage.saveNote(note);
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Nota guardada correctamente')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
