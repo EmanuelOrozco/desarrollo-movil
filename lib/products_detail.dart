@@ -158,6 +158,33 @@ class _ProductsDetailState extends State<ProductsDetail> {
                     ),
                   ),
                   const SizedBox(height: 24),
+                  const Divider(),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'My storaged note',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  TextField(
+                    controller: _noteController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Comment',
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Wrap(
+                    spacing: 8,
+                    children: List.generate(5, (index) {
+                      final value = index;
+                      return ChoiceChip(
+                        label: Text('$value'),
+                        selected: rating == value,
+                        onSelected: (_) {
+                          setState(() => rating = value);
+                        },
+                      );
+                    }),
+                  ),
                 ],
               ),
             ),
