@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "248447796718",
+    "project_id": "seguimiento-clase",
+    "storage_bucket": "seguimiento-clase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248447796718:android:d51fbe175791a03963baff",
+        "android_client_info": {
+          "package_name": "com.example.practica_clase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYlfzZlrKYIPYheVqdQT9BrBAiM3nTclk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -27,22 +27,24 @@ class ItemCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  product.imagePath,
-                  height: 110,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      height: 110,
-                      color: Colors.grey.shade200,
-                      child: const Icon(Icons.image_not_supported),
-                    );
-                  },
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    product.imagePath,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        width: double.infinity,
+                        color: Colors.grey.shade200,
+                        child: const Icon(Icons.image_not_supported),
+                      );
+                    },
+                  ),
                 ),
               ),
+              const SizedBox(height: 6),
               Text(
                 product.name,
                 maxLines: 2,
@@ -55,13 +57,19 @@ class ItemCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text('${product.category}', style: TextStyle(color: Color(0xFF637DCE), fontWeight: FontWeight.bold),),
-              const SizedBox(height: 4),
-              Text('${product.price} USD'),
-                IconButton(
-                iconSize: 24,
-                color: isFavorite ? Colors.green : Colors.black,
-                onPressed: onFavoriteTap,
-                icon: Icon(isFavorite ? Icons.shopping_cart : Icons.shopping_cart_outlined),
+              Row(
+                children: [
+                  Expanded(child: Text('${product.price} USD')),
+                  IconButton(
+                    iconSize: 24,
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    visualDensity: VisualDensity.compact,
+                    color: isFavorite ? Colors.green : Colors.black,
+                    onPressed: onFavoriteTap,
+                    icon: Icon(isFavorite ? Icons.shopping_cart : Icons.shopping_cart_outlined),
+                  ),
+                ],
               ),
             ],
           ),
