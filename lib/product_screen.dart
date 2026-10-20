@@ -3,10 +3,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'itemCard.dart';
 import 'models/product.dart';
 import 'products_detail.dart';
+import 'repositories/product_note_repository.dart';
 import 'services/product_services.dart';
 
 class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+  final ProductNoteRepository noteRepository;
+
+  const ProductScreen({
+    super.key,
+    required this.noteRepository,
+  });
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -68,7 +74,12 @@ class _ProductScreenState extends State<ProductScreen> {
   void openProductDetail(Product product) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProductsDetail(product: product)),
+      MaterialPageRoute(
+        builder: (context) => ProductsDetail(
+          product: product,
+          noteRepository: widget.noteRepository,
+        ),
+      ),
     );
   }
 
@@ -137,7 +148,19 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Productos')),
+      appBar: AppBar(
+        title: const Text('Productos'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            tooltip: 'Sincronizar notas',
+            icon: const Icon(Icons.sync),
+            onPressed: () async {
+              await widget.noteRepository.syncPending();
+            },
+          ),
+        ],
+      ),
       body: Padding(padding: const EdgeInsets.all(16), child: _buildBody()),
     );
   }

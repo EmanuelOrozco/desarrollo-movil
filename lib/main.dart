@@ -1,19 +1,39 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'firebase_options.dart';
+import 'local/app_database.dart';
+import 'local/product_note_local_data_source.dart';
 import 'product_screen.dart';
+import 'remote/product_note_remote_data_source.dart';
+import 'repositories/product_note_repository.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+
+  final database = AppDatabase();
+  final local = ProductNoteLocalDataSource(database);
+  final remote = ProductNoteRemoteDataSource(FirebaseFirestore.instance);
+  final noteRepository = ProductNoteRepository(
+    local: local,
+    remote: remote,
+  );
+
+  runApp(MyApp(noteRepository: noteRepository));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ProductNoteRepository noteRepository;
+
+  const MyApp({
+    super.key,
+    required this.noteRepository,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
-      home: const ProductScreen(),
+      home: ProductScreen(noteRepository: noteRepository),
     );
   }
 }

@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'models/product.dart';
 import 'models/product_note.dart';
-import 'services/product_note_storage.dart';
+import 'repositories/product_note_repository.dart';
 
 class ProductsDetail extends StatefulWidget {
   final Product product;
+  final ProductNoteRepository noteRepository;
 
-  const ProductsDetail({super.key, required this.product});
+  const ProductsDetail({
+    super.key,
+    required this.product,
+    required this.noteRepository,
+  });
 
   @override
   State<ProductsDetail> createState() => _ProductsDetailState();
 }
 
 class _ProductsDetailState extends State<ProductsDetail> {
-  final productNoteStorage = ProductNoteStorage();
   final TextEditingController _noteController = TextEditingController();
   int rating = 0;
 
@@ -33,7 +37,7 @@ class _ProductsDetailState extends State<ProductsDetail> {
     final productId = widget.product.id;
     if (productId == null) return;
 
-    final saved = await productNoteStorage.getNote(productId);
+    final saved = await widget.noteRepository.getNoteForProduct(productId);
     if (!mounted || saved == null) return;
 
     setState(() {
@@ -52,7 +56,7 @@ class _ProductsDetailState extends State<ProductsDetail> {
       rating: rating,
       updatedAt: DateTime.now(),
     );
-    await productNoteStorage.saveNote(note);
+    await widget.noteRepository.saveNote(note);
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Nota guardada correctamente')),
