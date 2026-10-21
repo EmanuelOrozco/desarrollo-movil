@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../core/app_logger.dart';
 import '../models/product.dart';
 
 class ApiException implements Exception {
@@ -20,6 +21,8 @@ class ProductServices {
 
   Future<List<Product>> getProducts() async {
     try {
+      AppLogger.debug('Consultando catálogo remoto');
+
       final response = await http
           .get(Uri.parse(baseUrl))
           .timeout(const Duration(seconds: 10));
@@ -30,14 +33,20 @@ class ProductServices {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = jsonDecode(response.body);
-        return data
+        final products = data
             .map((item) => Product.fromJson(item as Map<String, dynamic>))
             .toList();
+        AppLogger.debug('Productos obtenidos: ${products.length}');
+        return products;
       }
 
       throw ApiException('Error HTTP: ${response.statusCode}');
-    } on TimeoutException {
+    } on TimeoutException catch (error) {
+      AppLogger.error('No fue posible obtener los productos', error: error);
       throw const ApiException('Timeout');
+    } catch (error) {
+      AppLogger.error('No fue posible obtener los productos', error: error);
+      rethrow;
     }
   }
 }
