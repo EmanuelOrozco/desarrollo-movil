@@ -5,6 +5,9 @@ import 'models/product.dart';
 import 'products_detail.dart';
 import 'repositories/product_note_repository.dart';
 import 'services/product_services.dart';
+import 'widgets/empty_view.dart';
+import 'widgets/error_view.dart';
+import 'widgets/loading_view.dart';
 
 class ProductScreen extends StatefulWidget {
   final ProductNoteRepository noteRepository;
@@ -88,28 +91,22 @@ class _ProductScreenState extends State<ProductScreen> {
       future: _futureProducts,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          return const LoadingView();
         }
 
         if (snapshot.hasError) {
-          return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text('Error al cargar los productos'),
-                TextButton(
-                  onPressed: retryProducts,
-                  child: const Text('Reintentar'),
-                ),
-              ],
-            ),
+          return ErrorView(
+            message: 'No se pudieron cargar los productos.',
+            onRetry: retryProducts,
           );
         }
 
         final products = snapshot.data ?? [];
 
         if (products.isEmpty) {
-          return const Center(child: Text('No hay productos'));
+          return const EmptyView(
+            message: 'No hay productos disponibles.',
+          );
         }
 
         return LayoutBuilder(
