@@ -48,3 +48,8 @@ app.*.map.json
 .fvm/
 guia-flujo-app.pdf
 *.exe
+
+# Android signing
+android/key.properties
+*.jks
+*.keystore
