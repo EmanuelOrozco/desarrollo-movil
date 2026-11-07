@@ -7,8 +7,7 @@ class ProductNotes extends Table {
   IntColumn get rating => integer()();
   DateTimeColumn get updatedAt => dateTime()();
 
-  BoolColumn get pendingSync =>
-      boolean().withDefault(const Constant(true))();
+  BoolColumn get pendingSync => boolean().withDefault(const Constant(true))();
 
   @override
   Set<Column> get primaryKey => {productId};

@@ -144,9 +144,7 @@ class _ProductsDetailState extends State<ProductsDetail> {
                           size: 18,
                         ),
                         label: Text(
-                          widget.product.isAvailable
-                              ? 'Disponible'
-                              : 'Agotado',
+                          widget.product.isAvailable ? 'Disponible' : 'Agotado',
                         ),
                         side: BorderSide.none,
                         backgroundColor: colors.surfaceContainerHighest,

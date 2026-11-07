@@ -26,7 +26,9 @@ class ProductNoteLocalDataSource {
   }
 
   Future<void> saveNote(ProductNote note) async {
-    await db.into(db.productNotes).insertOnConflictUpdate(
+    await db
+        .into(db.productNotes)
+        .insertOnConflictUpdate(
           ProductNotesCompanion.insert(
             productId: Value(note.productId),
             note: note.note,
@@ -38,9 +40,9 @@ class ProductNoteLocalDataSource {
   }
 
   Future<List<ProductNote>> getPendingNotes() async {
-    final rows = await (db.select(db.productNotes)
-          ..where((t) => t.pendingSync.equals(true)))
-        .get();
+    final rows = await (db.select(
+      db.productNotes,
+    )..where((t) => t.pendingSync.equals(true))).get();
 
     return rows.map(_toDomain).toList();
   }
@@ -48,10 +50,6 @@ class ProductNoteLocalDataSource {
   Future<void> markSynced(int productId) async {
     await (db.update(db.productNotes)
           ..where((t) => t.productId.equals(productId)))
-        .write(
-      const ProductNotesCompanion(
-        pendingSync: Value(false),
-      ),
-    );
+        .write(const ProductNotesCompanion(pendingSync: Value(false)));
   }
 }

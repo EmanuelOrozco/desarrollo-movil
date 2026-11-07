@@ -21,9 +21,9 @@ class ProductNote {
   }
 
   Map<String, dynamic> toJson() => {
-        'productId': productId,
-        'note': note,
-        'rating': rating,
-        'updatedAt': updatedAt.toIso8601String(),
-      };
+    'productId': productId,
+    'note': note,
+    'rating': rating,
+    'updatedAt': updatedAt.toIso8601String(),
+  };
 }

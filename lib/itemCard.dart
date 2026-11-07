@@ -15,7 +15,6 @@ class ItemCard extends StatelessWidget {
     required this.onFavoriteTap,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -56,7 +55,13 @@ class ItemCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text('${product.category}', style: TextStyle(color: Color(0xFF637DCE), fontWeight: FontWeight.bold),),
+              Text(
+                '${product.category}',
+                style: TextStyle(
+                  color: Color(0xFF637DCE),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               Row(
                 children: [
                   Expanded(child: Text('${product.price} USD')),
@@ -67,7 +72,11 @@ class ItemCard extends StatelessWidget {
                     visualDensity: VisualDensity.compact,
                     color: isFavorite ? Colors.green : Colors.black,
                     onPressed: onFavoriteTap,
-                    icon: Icon(isFavorite ? Icons.shopping_cart : Icons.shopping_cart_outlined),
+                    icon: Icon(
+                      isFavorite
+                          ? Icons.shopping_cart
+                          : Icons.shopping_cart_outlined,
+                    ),
                   ),
                 ],
               ),

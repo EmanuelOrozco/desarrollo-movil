@@ -6,10 +6,7 @@ class ProductNoteRepository {
   final ProductNoteLocalDataSource local;
   final ProductNoteRemoteDataSource? remote;
 
-  ProductNoteRepository({
-    required this.local,
-    this.remote,
-  });
+  ProductNoteRepository({required this.local, this.remote});
 
   Future<ProductNote?> getNoteForProduct(int productId) =>
       local.getNoteForProduct(productId);
