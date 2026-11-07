@@ -1,9 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'itemCard.dart';
 import 'models/product.dart';
 import 'products_detail.dart';
 import 'repositories/product_note_repository.dart';
+import 'services/auth_service.dart';
+import 'services/crash/crash_service.dart';
 import 'services/product_services.dart';
 import 'widgets/empty_view.dart';
 import 'widgets/error_view.dart';
@@ -11,10 +14,14 @@ import 'widgets/loading_view.dart';
 
 class ProductScreen extends StatefulWidget {
   final ProductNoteRepository noteRepository;
+  final AuthService authService;
+  final CrashService crashService;
 
   const ProductScreen({
     super.key,
     required this.noteRepository,
+    required this.authService,
+    required this.crashService,
   });
 
   @override
@@ -104,9 +111,7 @@ class _ProductScreenState extends State<ProductScreen> {
         final products = snapshot.data ?? [];
 
         if (products.isEmpty) {
-          return const EmptyView(
-            message: 'No hay productos disponibles.',
-          );
+          return const EmptyView(message: 'No hay productos disponibles.');
         }
 
         return LayoutBuilder(
@@ -156,6 +161,42 @@ class _ProductScreenState extends State<ProductScreen> {
               await widget.noteRepository.syncPending();
             },
           ),
+          IconButton(
+            tooltip: 'Cerrar sesión',
+            onPressed: () async {
+              await widget.authService.logout();
+            },
+            icon: const Icon(Icons.logout),
+          ),
+          if (kDebugMode)
+            PopupMenuButton<String>(
+              tooltip: 'QA',
+              onSelected: (value) async {
+                if (value == 'non-fatal') {
+                  await widget.crashService.simulateNonFatalError();
+
+                  if (!context.mounted) return;
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('Error no fatal registrado')),
+                  );
+                }
+
+                if (value == 'fatal') {
+                  widget.crashService.simulateFatalCrash();
+                }
+              },
+              itemBuilder: (_) => const [
+                PopupMenuItem(
+                  value: 'non-fatal',
+                  child: Text('Registrar no fatal'),
+                ),
+                PopupMenuItem(
+                  value: 'fatal',
+                  child: Text('Forzar crash fatal'),
+                ),
+              ],
+            ),
         ],
       ),
       body: Padding(padding: const EdgeInsets.all(16), child: _buildBody()),
